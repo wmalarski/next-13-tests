@@ -1,6 +1,7 @@
 import type { Beer } from "./types";
 
 const endpoint = "https://api.punkapi.com";
+const delay = 2000;
 
 const buildSearchParams = (
   query?: Record<string, unknown>
@@ -27,7 +28,7 @@ const fetcher = async <T>({ pathname, query, init }: Fetcher): Promise<T> => {
   const response = await fetch(url, init);
   const json = await response.json();
 
-  return json as T;
+  return new Promise((resolve) => setTimeout(() => resolve(json as T), delay));
 };
 
 type GetBeers = {
@@ -50,7 +51,6 @@ type GetBeers = {
 };
 
 export const getBeers = (query: GetBeers = {}) => {
-  console.log("getBeers");
   return fetcher<Beer[]>({
     pathname: "/v2/beers",
     query,
@@ -61,14 +61,16 @@ type GetBeer = {
   id: string;
 };
 
-export const getBeer = ({ id }: GetBeer) => {
-  return fetcher<Beer[]>({
+export const getBeer = async ({ id }: GetBeer) => {
+  const result = await fetcher<Beer[]>({
     pathname: `/v2/beers/${id}`,
   });
+  return result.at(0);
 };
 
-export const getRandomBeer = () => {
-  return fetcher<Beer[]>({
+export const getRandomBeer = async () => {
+  const result = await fetcher<Beer[]>({
     pathname: "/v2/beers/random",
   });
+  return result.at(0);
 };

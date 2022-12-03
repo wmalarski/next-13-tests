@@ -1,6 +1,6 @@
+import * as paths from "@utils/paths";
 import Link from "next/link";
 import { ReactElement } from "react";
-import * as paths from "../../utils/paths";
 
 export const Navbar = (): ReactElement => {
   return (

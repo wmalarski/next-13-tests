@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 
 export const Navbar = (): ReactElement => {
   return (
-    <nav>
+    <nav className="flex flex-col gap-2 p-4">
       <Link href={paths.home}>Home</Link>
       <Link href={paths.dashboard}>Dashboard</Link>
       <Link href={paths.random}>Random</Link>

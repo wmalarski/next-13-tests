@@ -10,7 +10,7 @@ export default function RootLayout({ children }: Props): ReactElement {
   return (
     <html lang="en">
       <head />
-      <body>
+      <body className="flex flex-row w-screen min-h-screen">
         <Navbar />
         {children}
       </body>

@@ -8,7 +8,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.punkapi.com",
-        port: "",
         pathname: "/v2/**",
       },
     ],

@@ -7,6 +7,7 @@ export const Navbar = (): ReactElement => {
     <nav>
       <Link href={paths.home}>Home</Link>
       <Link href={paths.dashboard}>Dashboard</Link>
+      <Link href={paths.random}>Random</Link>
       <Link href={paths.signIn}>Sign In</Link>
       <Link href={paths.signOut}>Sign Out</Link>
     </nav>

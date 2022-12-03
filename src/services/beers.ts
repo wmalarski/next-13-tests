@@ -50,6 +50,7 @@ type GetBeers = {
 };
 
 export const getBeers = (query: GetBeers = {}) => {
+  console.log("getBeers");
   return fetcher<Beer[]>({
     pathname: "/v2/beers",
     query,
@@ -61,13 +62,13 @@ type GetBeer = {
 };
 
 export const getBeer = ({ id }: GetBeer) => {
-  return fetcher<Beer>({
+  return fetcher<Beer[]>({
     pathname: `/v2/beers/${id}`,
   });
 };
 
 export const getRandomBeer = () => {
-  return fetcher<Beer>({
+  return fetcher<Beer[]>({
     pathname: "/v2/beers/random",
   });
 };

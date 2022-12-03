@@ -28,7 +28,15 @@ const fetcher = async <T>({ pathname, query, init }: Fetcher): Promise<T> => {
   const response = await fetch(url, init);
   const json = await response.json();
 
-  return new Promise((resolve) => setTimeout(() => resolve(json as T), delay));
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      if (response.ok) {
+        resolve(json as T);
+      } else {
+        reject(json);
+      }
+    }, delay)
+  );
 };
 
 type GetBeers = {

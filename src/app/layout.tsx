@@ -1,18 +1,19 @@
-import './globals.css'
+import { ReactElement, ReactNode } from "react";
+import "./globals.css";
+import { Navbar } from "./Navbar/Navbar";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: Props): ReactElement {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
